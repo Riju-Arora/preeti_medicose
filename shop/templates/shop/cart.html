@@ -1,0 +1,96 @@
+{% extends "shop/base.html" %}
+{% block content %}
+
+<section class="mt-8 max-w-5xl mx-auto px-4">
+  <h2 class="text-3xl font-bold text-center text-gray-800">🛒 Your Cart</h2>
+
+  {% if cart_items %}
+  <div class="bg-white rounded-2xl shadow-lg p-6 mt-6">
+    
+    <!-- Desktop Table -->
+    <div class="hidden md:block overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-green-600 text-white">
+          <tr>
+            <th class="p-3">Product</th>
+            <th class="p-3 text-center">Price</th>
+            <th class="p-3 text-center">Quantity</th>
+            <th class="p-3 text-center">Subtotal</th>
+            <th class="p-3 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart_items %}
+          <tr class="border-b hover:bg-gray-50">
+            <td class="p-3">{{ item.product.name }}</td>
+            <td class="p-3 text-center">₹{{ item.product.price }}</td>
+
+            <!-- Quantity Update -->
+            <td class="p-3 text-center">
+              <form method="post" action="{% url 'update_cart' item.product.id %}" class="inline-flex items-center space-x-2">
+                {% csrf_token %}
+                <button type="submit" name="action" value="decrease"
+                        class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">➖</button>
+                <span class="px-3">{{ item.quantity }}</span>
+                <button type="submit" name="action" value="increase"
+                        class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">➕</button>
+              </form>
+            </td>
+
+            <td class="p-3 text-center">₹{{ item.subtotal }}</td>
+            <td class="p-3 text-center">
+              <a href="{% url 'remove_from_cart' item.product.id %}"
+                 class="text-red-600 font-bold hover:underline">
+                 ❌ Remove
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile Card Layout -->
+    <!-- Mobile Card Layout -->
+<div class="md:hidden space-y-3">
+  {% for item in cart_items %}
+  <div class="border rounded-lg p-3 shadow-sm">
+    <p class="font-semibold text-sm text-gray-800">{{ item.product.name }}</p>
+    <p class="text-gray-600 text-xs">Price: ₹{{ item.product.price }}</p>
+
+    <!-- Quantity Update -->
+    <form method="post" action="{% url 'update_cart' item.product.id %}" 
+          class="flex items-center space-x-2 mt-2">
+      {% csrf_token %}
+      <button type="submit" name="action" value="decrease"
+              class="px-2 py-1 bg-gray-200 rounded text-xs hover:bg-gray-300">➖</button>
+      <span class="px-2 text-sm">{{ item.quantity }}</span>
+      <button type="submit" name="action" value="increase"
+              class="px-2 py-1 bg-gray-200 rounded text-xs hover:bg-gray-300">➕</button>
+    </form>
+
+    <p class="font-bold text-sm text-gray-800 mt-2">Subtotal: ₹{{ item.subtotal }}</p>
+    <a href="{% url 'remove_from_cart' item.product.id %}"
+       class="text-red-600 text-xs font-semibold hover:underline block mt-2">
+         Remove
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+
+    <!-- Cart Total -->
+    <p class="text-right text-xl font-bold mt-6">Total: ₹{{ total }}</p>
+
+    <!-- Checkout Button -->
+    <a href="{% url 'checkout' %}" 
+       class="mt-6 block bg-green-600 text-white text-center py-3 rounded-xl font-semibold hover:bg-green-700 transition">
+       Proceed to Checkout →
+    </a>
+  </div>
+  {% else %}
+  <p class="text-center text-gray-500 mt-6">Your cart is empty </p>
+  {% endif %}
+</section>
+
+{% endblock %}

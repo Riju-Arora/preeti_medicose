@@ -1,0 +1,122 @@
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down { animation: fade-in-down 1s ease-out; }
+.animate-fade-in-up { animation: fade-in-up 1s ease-out; }
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down { animation: fade-in-down 0.6 ease-in-out; }
+/* Slide animation for reviews */
+@keyframes slide {
+  0%   { transform: translateX(0); }
+  33%  { transform: translateX(-100%); }
+  66%  { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-slide {
+  display: flex;
+  animation: slide 12s infinite;
+}
+/* Fixed Cart Section */
+#cart-section {
+    position: fixed;
+    top: 80px;              /* distance from top */
+    right: 20px;            /* distance from right */
+    width: 320px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Cart Heading */
+#cart-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #16a34a; /* green */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Cart Items */
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+}
+
+/* Total */
+#cart-total {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* WhatsApp Button */
+#whatsapp-btn {
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+    background: #25d366;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+#whatsapp-btn:hover {
+    background: #1ebe5b;
+}
+/* Floating Cart Button */
+/* Floating Cart Button */
+#cartButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Cart Box */
+#cart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 20px;
+  z-index: 999;
+  display: none; /* hidden by default */
+}

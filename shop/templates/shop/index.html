@@ -1,0 +1,282 @@
+{% extends "shop/base.html" %}
+{% block content %}
+{% load static %}
+
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-green-600 to-green-400 text-white py-10 sm:py-16 px-4 rounded-2xl shadow-lg">
+  <div class="text-center max-w-3xl mx-auto">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold animate-fade-in-down">
+      Preeti Medicose
+    </h1>
+    <p class="mt-3 sm:mt-4 text-base sm:text-lg font-light animate-fade-in-up">
+      Trusted Chemist & Cosmetics Shop – Medicines, Health & Wellness at your doorstep
+    </p>
+    <a href="{% url 'products' %}"
+       class="mt-5 inline-block bg-white text-green-600 font-semibold px-5 py-2 sm:px-6 sm:py-3 rounded-xl shadow-lg hover:scale-105 transition">
+       Shop Now
+    </a>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="mt-10 px-4">
+  <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800">Shop by Category</h2>
+<style>
+/* Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(0, 128, 0, 0.3); /* green ripple */
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".ripple").forEach(button => {
+    button.addEventListener("click", function(e) {
+      const circle = document.createElement("span");
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      circle.style.width = circle.style.height = `${size}px`;
+      circle.style.left = `${x}px`;
+      circle.style.top = `${y}px`;
+      this.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    });
+  });
+});
+</script>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
+
+  <!-- Medicines -->
+  <a href="{% url 'products' %}" 
+     class="ripple bg-white rounded-2xl shadow-md hover:shadow-xl 
+            transition transform hover:-translate-y-2 
+            overflow-hidden group block">
+    <div class="w-full aspect-square lg:aspect-[4/3] overflow-hidden">
+      <img src="{% static 'shop/images/medicines.jpg' %}" 
+           alt="Medicines" 
+           class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="text-center py-3 transition-colors duration-300 group-hover:text-green-600">
+      <h3 class="text-base sm:text-lg font-semibold">Medicines</h3>
+    </div>
+  </a>
+
+  <!-- Cosmetics -->
+  <a href="{% url 'products' %}" 
+     class="ripple bg-white rounded-2xl shadow-md hover:shadow-xl 
+            transition transform hover:-translate-y-2 
+            overflow-hidden group block">
+    <div class="w-full aspect-square lg:aspect-[4/3] overflow-hidden">
+      <img src="{% static 'shop/images/cosmetics.jpg' %}" 
+           alt="Cosmetics" 
+           class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="text-center py-3 transition-colors duration-300 group-hover:text-green-600">
+      <h3 class="text-base sm:text-lg font-semibold">Cosmetics</h3>
+    </div>
+  </a>
+
+  <!-- Baby Products -->
+  <a href="{% url 'products' %}" 
+     class="ripple bg-white rounded-2xl shadow-md hover:shadow-xl 
+            transition transform hover:-translate-y-2 
+            overflow-hidden group block">
+    <div class="w-full aspect-square lg:aspect-[4/3] overflow-hidden">
+      <img src="{% static 'shop/images/baby_products.jpg' %}" 
+           alt="Baby Products" 
+           class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="text-center py-3 transition-colors duration-300 group-hover:text-green-600">
+      <h3 class="text-base sm:text-lg font-semibold">Baby Products</h3>
+    </div>
+  </a>
+
+  <!-- Veterinary -->
+  <a href="{% url 'products' %}" 
+     class="ripple bg-white rounded-2xl shadow-md hover:shadow-xl 
+            transition transform hover:-translate-y-2 
+            overflow-hidden group block">
+    <div class="w-full aspect-square lg:aspect-[4/3] overflow-hidden">
+      <img src="{% static 'shop/images/veterinary.webp' %}" 
+           alt="Veterinary" 
+           class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+    </div>
+    <div class="text-center py-3 transition-colors duration-300 group-hover:text-green-600">
+      <h3 class="text-base sm:text-lg font-semibold">Veterinary</h3>
+    </div>
+  </a>
+
+</div>
+
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-12 sm:py-20 bg-gray-100 px-4">
+  <div class="container mx-auto max-w-5xl text-center">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+      Why Choose <span class="text-green-600">Preeti Medicose</span>?
+    </h2>
+    <p class="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+      For more than a decade, we have been the trusted partner of thousands of families 
+      in ensuring reliable healthcare and personal well-being.
+    </p>
+<!-- Features / Cards Section -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12 px-4">
+  
+  <!-- Card 1 -->
+  <div class="bg-white rounded-2xl shadow-md p-4 sm:p-6 
+              hover:shadow-xl hover:bg-green-50 focus:shadow-xl focus:bg-green-50 active:scale-95 active:bg-green-100 
+              hover:-translate-y-1 focus:-translate-y-1 transition transform duration-300 
+              w-full max-w-xs mx-auto cursor-pointer">
+    <div class="text-green-600 text-3xl sm:text-4xl lg:text-5xl mb-2 sm:mb-4">💊</div>
+    <h3 class="text-base sm:text-lg lg:text-xl font-semibold">100% Genuine Medicines</h3>
+    <p class="text-gray-600 mt-2 text-sm sm:text-base">
+      Only verified and authentic medicines directly sourced from trusted suppliers.
+    </p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="bg-white rounded-2xl shadow-md p-4 sm:p-6 
+              hover:shadow-xl hover:bg-green-50 focus:shadow-xl focus:bg-green-50 active:scale-95 active:bg-green-100 
+              hover:-translate-y-1 focus:-translate-y-1 transition transform duration-300 
+              w-full max-w-xs mx-auto cursor-pointer">
+    <div class="text-green-600 text-3xl sm:text-4xl lg:text-5xl mb-2 sm:mb-4">💰</div>
+    <h3 class="text-base sm:text-lg lg:text-xl font-semibold">Affordable Prices</h3>
+    <p class="text-gray-600 mt-2 text-sm sm:text-base">
+      Competitive rates and exclusive discounts to make healthcare accessible for all.
+    </p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="bg-white rounded-2xl shadow-md p-4 sm:p-6 
+              hover:shadow-xl hover:bg-green-50 focus:shadow-xl focus:bg-green-50 active:scale-95 active:bg-green-100 
+              hover:-translate-y-1 focus:-translate-y-1 transition transform duration-300 
+              w-full max-w-xs mx-auto cursor-pointer">
+    <div class="text-green-600 text-3xl sm:text-4xl lg:text-5xl mb-2 sm:mb-4">🤝</div>
+    <h3 class="text-base sm:text-lg lg:text-xl font-semibold">Trusted Since 2010</h3>
+    <p class="text-gray-600 mt-2 text-sm sm:text-base">
+      Over a decade of service, ensuring care and compassion for every customer.
+    </p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="bg-white rounded-2xl shadow-md p-4 sm:p-6 
+              hover:shadow-xl hover:bg-green-50 focus:shadow-xl focus:bg-green-50 active:scale-95 active:bg-green-100 
+              hover:-translate-y-1 focus:-translate-y-1 transition transform duration-300 
+              w-full max-w-xs mx-auto cursor-pointer">
+    <div class="text-green-600 text-3xl sm:text-4xl lg:text-5xl mb-2 sm:mb-4">🚚</div>
+    <h3 class="text-base sm:text-lg lg:text-xl font-semibold">Quick Delivery</h3>
+    <p class="text-gray-600 mt-2 text-sm sm:text-base">
+      Fast and reliable doorstep delivery so you never miss a dose.
+    </p>
+  </div>
+
+</div>
+
+<!-- About Us Section -->
+<section id="about-us" class="py-8 sm:py-16 bg-gray-100 text-center px-4">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-6">About Us</h2>
+  <p class="max-w-3xl mx-auto text-sm sm:text-base text-gray-700 leading-relaxed">
+    Since 2010, <strong>Preeti Medicose</strong> has been dedicated to
+    <span class="text-green-600 font-semibold">making people healthy</span> by providing trusted medicines, personal care, and cosmetics.
+  </p>
+  <p class="mt-2 sm:mt-4 text-sm sm:text-base text-gray-700">
+    Your health, our priority — because we believe in serving with care and compassion.
+  </p>
+</section>
+
+
+<!-- Shop Timings -->
+<section id="timings" class="py-12 sm:py-16 bg-white text-center px-4">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"> Shop Timings</h2>
+  <p class="text-base sm:text-lg text-gray-700">Open Daily: <b>9:00 AM – 9:00 PM</b></p>
+  <p class="mt-3 text-base sm:text-lg text-gray-700"> Address: Chanderpuri Colony, Main Market, Ambala Cantt</p>
+</section>
+<br>
+
+<!-- Customer Reviews -->
+<!-- <section id="reviews" class="py-12 sm:py-16 bg-white px-4"> -->
+  <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10">What Our Customers Say</h2>
+  <div class="overflow-hidden relative w-full max-w-3xl mx-auto">
+    <div class="flex animate-slide">
+      <div class="min-w-full text-center px-4 sm:px-8">
+        <p class="text-base sm:text-xl italic text-gray-700">"Best medical shop in town! Always reliable."</p>
+        <h4 class="mt-3 sm:mt-4 font-semibold">– Rahul Sharma</h4>
+      </div>
+      <div class="min-w-full text-center px-4 sm:px-8">
+        <p class="text-base sm:text-xl italic text-gray-700">"Excellent service, and genuine medicines."</p>
+        <h4 class="mt-3 sm:mt-4 font-semibold">– Neha Verma</h4>
+      </div>
+      <div class="min-w-full text-center px-4 sm:px-8">
+        <p class="text-base sm:text-xl italic text-gray-700">"Friendly staff and quick delivery. Highly recommended!"</p>
+        <h4 class="mt-3 sm:mt-4 font-semibold">– Aman Gupta</h4>
+      </div>
+    </div>
+  </div>
+<!-- </section> -->
+
+<!-- Contact Us -->
+<section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-green-50 to-green-100 text-center rounded-2xl shadow-md mt-12 sm:mt-16 px-4">
+  <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">Contact Us</h2>
+  <div class="max-w-2xl mx-auto space-y-3 sm:space-y-4 text-base sm:text-lg text-gray-700">
+    <p> <strong>Phone:</strong> <a href="tel:8950120349" class="text-green-700 hover:underline">8950120349</a></p>
+    <p> <strong>Email:</strong> <a href="mailto:arorarijul211@gmail.com" class="text-green-700 hover:underline">arorarijul211@gmail.com</a></p>
+    <p> Visit us at <strong>Preeti Medicose</strong> – Always here for your health needs!</p>
+  </div>
+</section>
+<br>
+<!-- Popular Products -->
+<!-- <section id="products" class="py-12 sm:py-16 bg-white px-4"> -->
+  <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 text-center">Popular Products</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 mt-8 sm:mt-10 max-w-6xl mx-auto">
+  
+  <!-- Product Card -->
+  <div class="bg-white p-2 sm:p-6 rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition">
+    <img src="{% static 'shop/images/paracetamol.webp' %}" alt="Paracetamol" 
+         class="w-full h-40 sm:h-56 object-cover rounded-t-xl sm:rounded-t-2xl mb-2 sm:mb-4">
+    <h3 class="text-sm sm:text-lg font-semibold">Paracetamol 650mg</h3>
+    <p class="text-gray-500 text-xs sm:text-base mt-1">Effective relief for fever and body pain.</p>
+    <p class="mt-1 sm:mt-2 font-bold text-green-700 text-sm sm:text-lg">₹30</p>
+  </div>
+
+  <!-- Product Card -->
+  <div class="bg-white p-2 sm:p-6 rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition">
+    <img src="{% static 'shop/images/herbalface.webp' %}" alt="Herbal Face Cream" 
+         class="w-full h-40 sm:h-56 object-cover rounded-t-xl sm:rounded-t-2xl mb-2 sm:mb-4">
+    <h3 class="text-sm sm:text-lg font-semibold">Herbal Face Cream</h3>
+    <p class="text-gray-500 text-xs sm:text-base mt-1">Gentle skin care for daily use.</p>
+    <p class="mt-1 sm:mt-2 font-bold text-green-700 text-sm sm:text-lg">₹120</p>
+  </div>
+
+  <!-- Product Card -->
+  <div class="bg-white p-2 sm:p-6 rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition">
+    <img src="{% static 'shop/images/coughsyrup.avif' %}" alt="Cough Syrup" 
+         class="w-full h-40 sm:h-56 object-cover rounded-t-xl sm:rounded-t-2xl mb-2 sm:mb-4">
+    <h3 class="text-sm sm:text-lg font-semibold">Cough Syrup</h3>
+    <p class="text-gray-500 text-xs sm:text-base mt-1">Fast relief from cough and throat irritation.</p>
+    <p class="mt-1 sm:mt-2 font-bold text-green-700 text-sm sm:text-lg">₹80</p>
+  </div>
+
+</div>
+
+<!-- </section> -->
+
+{% endblock %}
+

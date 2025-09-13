@@ -1,0 +1,39 @@
+{% extends "shop/base.html" %}
+{% block content %}
+
+<div class="text-center py-16 sm:py-24 px-6 max-w-2xl mx-auto bg-white rounded-xl shadow">
+
+  <!-- Heading: auto line-break on small screens -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-green-600 mb-4">
+    Thank You for Your Order!
+  </h1>
+  
+  <!-- Main paragraph: slightly bigger text -->
+  <p class="mt-4 text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
+    Please confirm your order by contacting us at 
+    <strong>8950120349</strong> and collect your items from our shop. 
+    You can also send your order via WhatsApp.
+  </p>
+
+  {% if total_savings > 0 %}
+    <p class="mt-4 text-base sm:text-lg text-pink-600 font-semibold mb-4">
+       You saved ₹{{ total_savings }} on this shopping with Preeti Medicose
+    </p>
+  {% endif %}
+
+  <a href="{{ whatsapp_url }}" target="_blank"
+     class="mt-4 sm:mt-6 inline-block bg-green-600 text-white px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl shadow-lg hover:bg-green-700 transition mb-4">
+      Send Order via WhatsApp
+  </a>
+
+  <div class="mt-2">
+    <a href="{% url 'home' %}" class="text-blue-600 underline text-sm sm:text-base">← Back to Home</a>
+  </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
